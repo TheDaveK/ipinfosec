@@ -1,0 +1,77 @@
+.contact__container {
+    display: grid;
+    place-items: center;
+}
+
+.contact__wrapper {
+    width: fit-content;
+    display: flex;
+    gap: 2rem;
+}
+
+.contact__wrapper a {
+    background: var(--color-primary);
+    font-size: 2rem;
+    border: 2px solid transparent;
+    transition: var(--transition);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Enhanced hover animation */
+.contact__wrapper a:hover {
+    background: transparent;
+    border-color: var(--color-gray-100);
+    transform: translateY(-0.5rem) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional ripple effect */
+.contact__wrapper a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+}
+
+.contact__wrapper a:hover::after {
+    transform: scale(2);
+}
+
+/* Icon color transition */
+.contact__wrapper a svg {
+    transition: var(--transition);
+    position: relative;
+    z-index: 1;
+}
+
+.contact__wrapper a:hover svg {
+    color: var(--color-primary);
+    transform: rotate(10deg);
+}
+
+/* MEDIA QUERIES (small screens) */
+@media screen and (max-width: 600px) {
+    .contact__wrapper {
+        gap: 1.5rem;
+    }
+    
+    .contact__wrapper a {
+        padding: 1rem;
+        font-size: 1.2rem;
+        border-radius: 1rem;
+    }
+
+    /* Reduced animation intensity on mobile */
+    .contact__wrapper a:hover {
+        transform: translateY(-0.2rem) scale(1.02);
+    }
+}

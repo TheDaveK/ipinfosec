@@ -1,0 +1,310 @@
+/* Typing Animation */
+.typing-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--color-white);
+  min-height: 60px;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Service Section */
+.Service__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.Service__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.Service__program {
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.Service__program::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.Service__program:hover::before {
+  left: 100%;
+}
+
+.Service__program:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.Service__program:hover .service-icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Methodology Section */
+.methodology-section {
+  margin-top: 4rem;
+  padding: 2rem 0;
+}
+
+.methodology-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.methodology-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--color-primary);
+}
+
+/* Timeline */
+.timeline-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.methodology-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.methodology-card {
+  padding: 2rem;
+  margin: 2rem 0;
+  width: 45%;
+  position: relative;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+  background: var(--color-white);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.methodology-card:nth-child(odd) {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.methodology-card:nth-child(even) {
+  margin-left: auto;
+  margin-right: 0;
+}
+.btn-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+/* Optional: If you want the button to be larger */
+.btn-center-container .btn.sm {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+}
+/* Animation delays for timeline items */
+.methodology-card:nth-child(1) { animation-delay: 0.1s; }
+.methodology-card:nth-child(2) { animation-delay: 0.2s; }
+.methodology-card:nth-child(3) { animation-delay: 0.3s; }
+.methodology-card:nth-child(4) { animation-delay: 0.4s; }
+.methodology-card:nth-child(5) { animation-delay: 0.5s; }
+.methodology-card:nth-child(6) { animation-delay: 0.6s; }
+.methodology-card:nth-child(7) { animation-delay: 0.7s; }
+.methodology-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.methodology-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: var(--color-primary);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.methodology-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.methodology-card:hover .methodology-icon {
+  transform: scale(1.3) rotate(10deg);
+  filter: brightness(1.2);
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--color-primary);
+  border: 4px solid var(--color-white);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.methodology-card:nth-child(odd) .timeline-dot {
+  right: -60px;
+}
+
+.methodology-card:nth-child(even) .timeline-dot {
+  left: -60px;
+}
+
+.methodology-card:hover .timeline-dot {
+  transform: translateY(-50%) scale(1.3);
+  background: var(--color-secondary);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Hover effect for methodology cards */
+.methodology-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.methodology-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 30px;
+  }
+  
+  .methodology-card {
+    width: calc(100% - 80px);
+    margin-left: 80px !important;
+    margin-right: 0 !important;
+  }
+  
+  .methodology-card:nth-child(odd) .timeline-dot,
+  .methodology-card:nth-child(even) .timeline-dot {
+    left: -60px;
+    right: auto;
+  }
+  
+  .Service__wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .methodology-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .Service__container {
+    padding: 1rem;
+  }
+  
+  .methodology-card {
+    padding: 1.5rem;
+    margin-left: 60px !important;
+    width: calc(100% - 60px);
+  }
+  
+  .timeline-line {
+    left: 20px;
+  }
+  
+  .methodology-card:nth-child(odd) .timeline-dot,
+  .methodology-card:nth-child(even) .timeline-dot {
+    left: -50px;
+  }
+}
+
+/* Button hover effects */
+.btn.sm {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.sm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn.sm:hover::before {
+  left: 100%;
+}
+
+.btn.sm:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}

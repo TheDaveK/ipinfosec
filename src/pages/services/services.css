@@ -1,0 +1,135 @@
+.service__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.plan {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(0);
+  position: relative;
+  overflow: hidden;
+}
+
+.plan:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.plan::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-primary-variant), transparent);
+  transition: left 0.5s ease-in-out;
+}
+
+.plan:hover::before {
+  left: 100%;
+}
+
+.plan h3 {
+  margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.plan:hover h3 {
+  color: var(--color-primary-variant);
+}
+
+.plan small {
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+
+.plan:hover small {
+  color: var(--color-gray-100);
+}
+
+.plan h1 {
+  color: var(--color-primary-variant);
+  display: inline;
+  transition: color 0.3s ease;
+}
+
+.plan:hover h1 {
+  color: var(--color-primary);
+}
+
+.plan h2 {
+  display: inline;
+  color: var(--color-gray-400);
+  transition: color 0.3s ease;
+}
+
+.plan:hover h2 {
+  color: var(--color-gray-300);
+}
+
+.plan h4 {
+  margin-top: 2rem;
+  transition: color 0.3s ease;
+}
+
+.plan:hover h4 {
+  color: var(--color-primary-variant);
+}
+
+.plan p {
+  margin-top: 1rem;
+  color: var(--color-gray-100);
+  transition: all 0.3s ease;
+  transform: translateX(0);
+}
+
+.plan:hover p {
+  transform: translateX(5px);
+}
+
+.plan p.disabled {
+  color: var(--color-gray-400);
+}
+
+.plan button {
+  margin-top: 3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.plan:hover button {
+  transform: scale(1.05);
+  background: var(--color-secondary);
+}
+
+/* MEDIA QUERIES (medium screens) */
+@media screen and (max-width: 1024px) {
+  .service__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* MEDIA QUERIES (small screens) */
+@media screen and (max-width: 600px) {
+  .service__container {
+    grid-template-columns: 1fr;
+  }
+
+  .plan {
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  /* Reduce hover effects on mobile for better performance */
+  .plan:hover {
+    transform: translateY(-5px);
+  }
+  
+  .plan:hover p {
+    transform: translateX(2px);
+  }
+}

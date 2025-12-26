@@ -1,0 +1,19 @@
+
+.map-canvas {
+  text-align: center; 
+}
+
+.map-canvas img {
+  display: none;
+}
+
+.no-canvas .map-canvas img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+#canvas-map {
+  max-width: 100%;
+  margin: 0 auto;
+}
