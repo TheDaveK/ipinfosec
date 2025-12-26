@@ -28,7 +28,7 @@ const Footer = () => {
                     <a href="https://www.instagram.com/ipinfosec/" target="_blank" rel='noreferrer noopener'><AiFillInstagram/></a>
                     <a href="https://www.youtube.com/@ipinfosec" target="_blank" rel='noreferrer noopener'>< FaYoutube/></a>
                     {/* <a href="https://github.com/ipinfosec" target="_blank" rel='noreferrer noopener'><FaGithub/></a> */}
-                    <a href="https://github.com/ipinfosec" target="_blank" rel='noreferrer noopener'><FaDiscord/></a>
+                     {/*<a href="https://github.com/ipinfosec" target="_blank" rel='noreferrer noopener'><FaDiscord/></a>*/}
                 </div>
             </article>
             <article>
