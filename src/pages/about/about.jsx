@@ -5,57 +5,65 @@ import VisionImage from '../../images/2.png'
 import MissionImage from '../../images/3.png'
 import CEOImage1 from '../../images/yash.png'
 import CEOImage2 from '../../images/dave.png'
+import CEOImage3 from '../../images/darshan.png' 
 import './about.css'
 import { useEffect, useState } from 'react'
-const About = () => {
 
+const About = () => {
   const [displayText, setDisplayText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopNum, setLoopNum] = useState(0)
-  const [typingSpeed, setTypingSpeed] = useState(150)
   
-    const text = "IPINFOSEC is a next-generation cybersecurity company delivering intelligent, proactive protection against evolving digital threats. We secure networks, data, and systems with precision, innovation, and trust."
-  
-    useEffect(() => {
-      let timer
-      const handleType = () => {
-        const i = loopNum % 1
-        const fullText = text
-  
-        setDisplayText(isDeleting 
-          ? fullText.substring(0, displayText.length - 1)
-          : fullText.substring(0, displayText.length + 1)
-        )
-  
-        setTypingSpeed(isDeleting ? 75 : 150)
-  
-        if (!isDeleting && displayText === fullText) {
+  const text = "IPINFOSEC is a next-generation cybersecurity company delivering intelligent, proactive protection against evolving digital threats. We secure networks, data, and systems with precision, innovation, and trust."
+
+  useEffect(() => {
+    let timer
+    
+    const handleType = () => {
+      const fullText = text
+      const currentLength = displayText.length
+      
+      if (!isDeleting) {
+        // Typing forward
+        if (currentLength < fullText.length) {
+          setDisplayText(fullText.substring(0, currentLength + 1))
+        } else {
+          // Finished typing, wait then start deleting
           setTimeout(() => setIsDeleting(true), 2000)
-        } else if (isDeleting && displayText === '') {
+          return
+        }
+      } else {
+        // Deleting
+        if (currentLength > 0) {
+          setDisplayText(fullText.substring(0, currentLength - 1))
+        } else {
+          // Finished deleting, reset for next loop
           setIsDeleting(false)
           setLoopNum(loopNum + 1)
+          return
         }
       }
-  
-      timer = setTimeout(handleType, typingSpeed)
-      return () => clearTimeout(timer)
-    }, [displayText, isDeleting, loopNum, typingSpeed])
+      
+      timer = setTimeout(handleType, isDeleting ? 50 : 100)
+    }
 
-
+    timer = setTimeout(handleType, isDeleting ? 50 : 100)
+    return () => clearTimeout(timer)
+  }, [displayText, isDeleting, loopNum, text])
 
   return (
     <>
       <Header title="About Us" image={HeaderImage}>
         <p className="typing-text">
-            {displayText}
-            <span className="cursor">|</span>
-          </p>
+          {displayText}
+          <span className="cursor">|</span>
+        </p>
       </Header>
       
       <section className="about__story">
         <div className="container about__story-container">
           <div className="about__section-image">
-            <img src={StoryImage} alt="Our Story Image" />
+            <img src={StoryImage} alt="Our Story" />
           </div>
           <div className="about__section-content">
             <h1>Our Story</h1>
@@ -66,7 +74,7 @@ const About = () => {
               We combine deep technical expertise, industry best practices, and a proactive security mindset to identify risks before they become threats. 
             </p>
             <p>
-              At IP InfoSec, we believe cybersecurity is not just about defense—it’s about enabling confidence, resilience, and secure digital growth.
+              At IP InfoSec, we believe cybersecurity is not just about defense—it's about enabling confidence, resilience, and secure digital growth.
             </p>
           </div>
         </div>
@@ -87,7 +95,7 @@ const About = () => {
             </p>
           </div>
           <div className="about__section-image">
-            <img src={VisionImage} alt="Our Vision Image" />
+            <img src={VisionImage} alt="Our Vision" />
           </div>
         </div>
       </section>
@@ -95,7 +103,7 @@ const About = () => {
       <section className="about__mission">
         <div className="container about__mission-container">
           <div className="about__section-image">
-            <img src={MissionImage} alt="Our Mission Image" />
+            <img src={MissionImage} alt="Our Mission" />
           </div>
           <div className="about__section-content">
             <h1>Our Mission</h1>
@@ -105,19 +113,17 @@ const About = () => {
             <p>
               We are committed to identifying vulnerabilities, strengthening defenses, and ensuring the confidentiality, integrity, and availability of critical digital assets—helping our clients operate securely and with confidence in a digital-first world.
             </p>
-            <p>
-               {/* Minima tempora voluptates natus. */}
-            </p>
           </div>
         </div>
       </section>
 
       <section className="about__ceo">
         <div className="container about__ceo-container">
+          <h1 className="ceo__title">Our Leadership</h1>
           <div className="about__ceo-content">
             <div className="ceo__card">
               <div className="ceo__image-wrapper">
-                <img src={CEOImage1} alt="CEO Image" />
+                <img src={CEOImage1} alt="Yash Hirapara" />
               </div>
               <div className="ceo__info">
                 <h3>CEO & Co-Founder</h3>
@@ -130,13 +136,26 @@ const About = () => {
             
             <div className="ceo__card">
               <div className="ceo__image-wrapper">
-                <img src={CEOImage2} alt="Co-Founder Image" />
+                <img src={CEOImage2} alt="Dave Kalpesh" />
               </div>
               <div className="ceo__info">
                 <h3>Founder & Co-CEO</h3>
                 <h2>Dave Kalpesh</h2>
                 <p>
-                  Dave Kalpesh is the Founder & Co-CEO of IP InfoSec, driving the company’s vision with a strong focus on cybersecurity excellence and innovation. With a passion for building secure digital solutions, he plays a key role in shaping strategy, strengthening security practices, and helping organizations stay protected against evolving cyber threats.
+                  Dave Kalpesh is the Founder & Co-CEO of IP InfoSec, driving the company's vision with a strong focus on cybersecurity excellence and innovation. With a passion for building secure digital solutions, he plays a key role in shaping strategy, strengthening security practices, and helping organizations stay protected against evolving cyber threats.
+                </p>
+              </div>
+            </div>
+
+            <div className="ceo__card">
+              <div className="ceo__image-wrapper">
+                <img src={CEOImage3} alt="Darshan Karkar" />
+              </div>
+              <div className="ceo__info">
+                <h3>Co-Founder</h3>
+                <h2>Darshan Karkar</h2>
+                <p>
+                   IPInfoSec is a trusted cybersecurity company dedicated to protecting organizations from modern digital threats. We specialize in information security, threat detection, risk management, and proactive cyber defense solutions that help businesses stay secure, compliant, and resilient in an evolving threat landscape.
                 </p>
               </div>
             </div>
