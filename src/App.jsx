@@ -20,11 +20,12 @@ import VulnerabilityAssessment from './pages/VulnerabilityAssessment/Vulnerabili
 import RansomwareDataRecovery from './pages/RansomwareDataRecovery/Ransomwaredatarecovery'
 import MalwareAnalysis from './pages/MalwareAnalysis/MalwareAnalysis'
 import TechnicalSupport from './pages/TechnicalSupport/TechnicalSupport'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
 
-useEffect(() => {
+  useEffect(() => {
     const handleContextMenu = (e) => {
       e.preventDefault();
     };
@@ -36,6 +37,7 @@ useEffect(() => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar/>
       <Routes>
         <Route index element={<Home/>}/>
@@ -51,13 +53,13 @@ useEffect(() => {
         <Route path='roles-protocols' element={<RolesProtocols/>}/>
         <Route path='threats' element={<Threats/>}/>
         <Route path='vulnerabilities' element={<Vulnerabilities/>}/>
-        <Route path='*' element={<Notfound/>}/>
-        Keep the 404 route at the end
         <Route path='VulnerabilityAssessment' element={<VulnerabilityAssessment/>}/>
         <Route path='PenetrationTesting' element={<PenetrationTesting/>}/>
         <Route path='RansomwareDataRecovery' element={<RansomwareDataRecovery/>}/>
         <Route path='MalwareAnalysis' element={<MalwareAnalysis/>}/>
         <Route path='TechnicalSupport' element={<TechnicalSupport/>}/>
+        {/* 404 route must be last */}
+        <Route path='*' element={<Notfound/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
