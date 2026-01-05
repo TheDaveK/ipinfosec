@@ -5,7 +5,7 @@ import VisionImage from '../../images/2.png'
 import MissionImage from '../../images/3.png'
 import CEOImage1 from '../../images/yash.png'
 import CEOImage2 from '../../images/dave.png'
-import CEOImage3 from '../../images/darshan.png' 
+import CEOImage3 from '../../images/darshan.jpg' 
 import './about.css'
 import { useEffect, useState } from 'react'
 
